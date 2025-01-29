@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState, useEffect } from 'https://cdn.skypack.dev/react';
+import ReactDOM from 'https://cdn.skypack.dev/react-dom';
+import WebsimSocket from 'https://unpkg.com/@websim/socket@latest/dist/websocket.js';
 
 function App() {
   const room = new WebsimSocket();
