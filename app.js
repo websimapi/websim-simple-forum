@@ -1,12 +1,12 @@
-import React, { useState } from 'https://cdn.skypack.dev/react';
-import ReactDOM from 'https://cdn.skypack.dev/react-dom';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
 
 function App() {
   const room = new WebsimSocket();
   const [posts, setPosts] = useState([]);
   const [newPostText, setNewPostText] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Subscribe to post collection
     const unsubscribe = room.collection('post')
       .filter({ parent_id: null })
@@ -53,7 +53,7 @@ function Post({ post, room, isReply = false }) {
   const [replies, setReplies] = useState([]);
   const [replyText, setReplyText] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsubscribe = room.collection('post')
       .filter({ parent_id: post.id })
       .subscribe(setReplies);
@@ -106,4 +106,5 @@ function Post({ post, room, isReply = false }) {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const root = ReactDOM.createRoot(document.getElementById('app'));
+root.render(<App />);
